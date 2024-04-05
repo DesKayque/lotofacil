@@ -11,27 +11,22 @@
        }   
        .group5{
         display: block;
-
         margin: 5px;
        }
-       button:active {
-        background-color: red;
-       }
        .selected {
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        background: #56ac54;
        }
-       
        button {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 60px;
     border: none;
     outline: none;
     color: #fff;
-    background: #111;
+    background: #aba6a6;
     cursor: pointer;
     position: relative;
     z-index: 0;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 button:before {
@@ -61,6 +56,7 @@ button:before {
     <p>Confira também os resultados na pagína oficial</p>
     <a href="https://loterias.caixa.gov.br/Paginas/Lotofacil.aspx">Lotofácil CAIXA</a>
     <br />
+    <p id="qtd"></p> <br />
     <div>
         <div class="group5">   
             <button id="btn-1" onclick="add(1)">01</button>
@@ -103,11 +99,19 @@ button:before {
         </div>
     </div>
     <script>
-
+        const volante=[]
 
         function add(n){
             var btn = document.getElementById('btn-'+n)
             btn.classList.toggle('selected');
+
+            if(volante.includes(n)){
+                volante.splice(volante.indexOf(n),1)
+            }else{
+                volante.push(n)
+            }
+            var qtd = document.getElementById('qtd')
+            qtd.innerText=volante.length
         }
     </script>
 </body>
